@@ -3,14 +3,14 @@ import time
 
 ALIGNMENT = 'center'
 FONT = ('Comic Sans MS', 12, 'normal')
-PLAY_TIME = 10
+
 
 
 class Score(Turtle):
 
     def __init__(self):
         super().__init__()
-        self.play_time = PLAY_TIME
+        self.play_time = 10
         self.score = 0
         self.ht()
         self.color('white')
@@ -29,7 +29,7 @@ class Score(Turtle):
         self.write(f'score: {self.score} ', False, 'center', ('Comic Sans MS', 12, 'normal'))
 
     def timer(self):
-        for seconds in range(PLAY_TIME):
+        for seconds in range(self.play_time):
             self.goto(0, 0)
             self.write(f'{self.play_time}', False, ALIGNMENT, FONT)
             time.sleep(1)

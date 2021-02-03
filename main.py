@@ -7,7 +7,8 @@ mode('standard')
 import time
 
 screen = Screen()
-screensize(canvwidth=600, canvheight=600, bg='black')
+screen.screensize(600, 600)
+screen.bgcolor('black')
 screen.title('Snake-it!')
 screen.tracer(0)
 snake = Snake()
@@ -28,10 +29,15 @@ while game_on:
         food.refresh()
         score.score_refresh()
         snake.get_bigger()
-        score.timer()
-    if snake.head.xcor() < -300 or snake.head.xcor() > 300 or snake.head.ycor() < -300 or snake.head.ycor() > 300:
+        # score.timer()
+    if snake.head.xcor() < -375 or snake.head.xcor() > 370 or snake.head.ycor() < -310 or snake.head.ycor() > 320:
         game_on = False
         score.game_over()
+
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
+            game_on = False
+            score.game_over()
 
 
 
